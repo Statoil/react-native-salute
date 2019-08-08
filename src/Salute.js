@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import {
   TouchableWithoutFeedback,
   Animated,
-  StyleSheet,
   Text,
   View,
   Image,
+  SafeAreaView,
 } from 'react-native';
 import defaultStyles from './styles';
 import defaultIcons from './icons';
@@ -124,14 +124,16 @@ export default class Salute extends Component {
 
     if (Object.prototype.toString.call(content) === '[object String]') {
       return (
-        <View style={[currentStyles.container, styles.container]}>
-          {iconContainer}
-          <View style={[currentStyles.textContainer, styles.textContainer]}>
-            <Text style={[currentStyles.text, styles.text]}>
-              {content}
-            </Text>
+        <SafeAreaView>
+          <View style={[currentStyles.container, styles.container]}>
+            {iconContainer}
+            <View style={[currentStyles.textContainer, styles.textContainer]}>
+              <Text style={[currentStyles.text, styles.text]}>
+                {content}
+              </Text>
+            </View>
           </View>
-        </View>
+        </SafeAreaView>
       );
     }
     return content;
@@ -151,7 +153,7 @@ export default class Salute extends Component {
       zIndex: 9999,
       minHeight: this.props.minHeight,
       opacity: this.state.animatedValue,
-      transform: [{ translateY: y }]
+      transform: [{ translateY: y }],
     };
 
     return (
